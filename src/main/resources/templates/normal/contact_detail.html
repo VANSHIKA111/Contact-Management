@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+
+<body>
+	<section style="color: black;">
+
+		<div class="card mr-3"  th:if="${contact}">
+			<h1 class="text-center">Contact Details</h1>
+			<div class="card-body">
+				<div class="container text-center">
+
+					<img style="height: 150px; width: 150px;" class="my_profile_picture"
+						th:src="@{'/img/'+${contact.image}}" alt="" />
+						
+					<h4 class="mt-3"><span th:text="${contact.name}"></span> ( <span
+							th:text="${contact.secondName}"></span> )</h4>
+							
+					<table class="table ">
+						<thead>
+							<tr>
+								<th scope="col">Field</th>
+								<th scope="col">Description</th>
+
+							</tr>
+						</thead>
+						<tbody>
+							
+							<tr>
+								<td>Email</td>
+								<th scope="row"><span th:text="${contact.email}"></span></th>
+							</tr>
+							<tr>
+								<td>Phone</td>
+								<th scope="row"><span th:text="${contact.phone}"></span></th>
+							</tr>
+							<tr>
+								<td>Work</td>
+								<th scope="row"><span th:text="${contact.work}"></span></th>
+							</tr>
+
+						</tbody>
+					</table>
+					<div class="container text-center">
+						<h5>Description</h5>
+					</div>
+					<div class="description" style="border:solid dimgrey 1px">
+						<th:block th:utext="${contact.description}"></th:block>
+					</div>
+					
+				
+				</div>
+			</div>
+
+		</div>
+		
+			<h1 class="text-center p-3 bg-danger text-white " th:unless="${contact}"> you don't have access to this contact</h1>
+	
+
+
+	</section>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+
+<body>
+	<section>
+		<div class="container mt-5">
+			<div class="row">
+				<div class="col-md-5 mx-auto">
+					<div id="first">
+						<div class="myform form ">
+							<div class="logo mb-3">
+								<div class="col-md-12 text-center">
+									<h1>Login</h1>
+								</div>
+							</div>
+							<div th:if="${param.change}" class="alert alert-success">
+								<p th:text="${param.change}"></p>
+							</div>
+							<form action="" th:action="@{/dologin}" method="post" name="login">
+								<div th:if="${param.error}" class="alert alert-danger text-center">
+									Invalid Username and Pasword
+								</div>
+								<div th:if="${param.logout}" class="alert alert-success text-center">
+									Logged out Successfully
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1">Email address</label>
+									<input type="email" name="username" class="form-control" id="email"
+										aria-describedby="emailHelp" placeholder="Enter email">
+								</div>
+								<div class="form-group">
+									<label for="exampleInputEmail1">Password</label>
+									<input type="password" name="password" id="password" class="form-control"
+										aria-describedby="emailHelp" placeholder="Enter Password">
+								</div>
+								
+								<div class="col-md-12 text-center ">
+									<button type="submit"
+										class=" btn btn-block mybtn bg-primary tx-tfm text-white">Login</button>
+								</div>
+								<div class="col-md-12 ">
+									<div class="login-or">
+										<hr class="hr-or">
+										<span class="span-or">or</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<p class="text-center">Don't have account? <a href="/signup" id="signup">Sign up
+											here</a>
+									</p>
+								</div>
+								<div class="container text-center">
+									<a th:href="@{/forgot}">Forgot Password?</a>
+								</div>
+								
+							</form>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+</html>
